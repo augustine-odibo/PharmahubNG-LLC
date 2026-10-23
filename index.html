@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PharmaHub – For Patients, For Pharmacists and Policies</title>
+  <meta name="description" content="Nigeria's #1 Digital Pharmacy Platform. Free, trusted drug and poison information from licensed pharmacists, a verified pharmacy marketplace, and professional growth for pharmacists." />
+  <link rel="canonical" href="https://pharmahub.com.ng/" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PharmaHub" />
+  <meta property="og:title" content="PharmaHub" />
+  <meta property="og:description" content="Nigeria's #1 Digital Pharmacy Platform" />
+  <meta property="og:url" content="https://pharmahub.com.ng/" />
+  <meta property="og:image" content="https://pharmahub.com.ng/wp-content/uploads/2026/06/PharmaHub-Landscape-Logo-01-scaled-1024x291.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PharmaHub" />
+  <meta name="twitter:description" content="Nigeria's #1 Digital Pharmacy Platform" />
+  <meta name="twitter:image" content="https://pharmahub.com.ng/wp-content/uploads/2026/06/PharmaHub-Landscape-Logo-01-scaled-1024x291.png" />
+  <link rel="icon" href="https://pharmahub.com.ng/wp-content/uploads/2026/06/cropped-PharmaHublogo-01-01-270x270.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============ THEME (edit these to match your brand) ============ */
+    :root {
+      --primary: #0b7a5c;        /* PharmaHub green */
+      --primary-dark: #075c45;
+      --primary-soft: #e6f4ef;
+      --accent: #f59e0b;         /* sale / highlight */
+      --ink: #0f1f1a;
+      --muted: #5b6b66;
+      --line: #e3ebe8;
+      --bg: #ffffff;
+      --bg-alt: #f6faf8;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(11, 122, 92, .10);
+      --max: 1200px;
+      --font: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: var(--font); color: var(--ink); background: var(--bg); line-height: 1.6; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    .container { width: min(100% - 32px, var(--max)); margin-inline: auto; }
+    .skip-link { position: absolute; left: -999px; top: 8px; background: var(--primary); color: #fff; padding: 8px 14px; border-radius: 8px; z-index: 999; }
+    .skip-link:focus { left: 8px; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 999px; font-weight: 700; border: 2px solid var(--primary); background: var(--primary); color: #fff; transition: .2s; }
+    .btn:hover { background: var(--primary-dark); border-color: var(--primary-dark); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: #fff; }
+    .eyebrow { display: inline-block; font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--primary); margin-bottom: 10px; }
+    .section { padding: 80px 0; }
+    .section-head { text-align: center; max-width: 680px; margin: 0 auto 44px; }
+    .section-head h2 { font-size: clamp(1.7rem, 3.5vw, 2.5rem); line-height: 1.2; margin: 0; }
+
+    /* ============ PROMO BAR ============ */
+    .promo { background: var(--ink); color: #fff; font-size: .9rem; }
+    .promo .container { display: flex; justify-content: center; align-items: center; gap: 14px; padding: 9px 0; flex-wrap: wrap; text-align: center; }
+    .promo button { background: none; border: 1px solid rgba(255,255,255,.4); color: #fff; border-radius: 999px; padding: 2px 12px; font-size: .8rem; }
+
+    /* ============ HEADER ============ */
+    header.site-header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 20px; }
+    .logo img { height: 44px; width: auto; }
+    .nav-links { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; font-weight: 600; }
+    .nav-links a { position: relative; padding: 6px 0; }
+    .nav-links a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: var(--primary); transition: .2s; }
+    .nav-links a:hover::after, .nav-links a[aria-current="page"]::after { width: 100%; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .cart-btn { display: flex; align-items: center; gap: 8px; background: var(--primary-soft); color: var(--primary-dark); border: 0; border-radius: 999px; padding: 9px 16px; font-weight: 700; }
+    .cart-count { background: var(--primary); color: #fff; border-radius: 999px; font-size: .72rem; min-width: 20px; height: 20px; display: grid; place-items: center; padding: 0 6px; }
+    .menu-toggle { display: none; background: none; border: 0; padding: 8px; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--ink); margin: 5px 0; transition: .2s; }
+
+    /* ============ HERO SLIDER ============ */
+    .hero { position: relative; background: linear-gradient(135deg, var(--bg-alt), #fff 60%); overflow: hidden; }
+    .slides { position: relative; min-height: 560px; }
+    .slide { position: absolute; inset: 0; display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 40px; opacity: 0; visibility: hidden; transition: opacity .6s ease, visibility .6s; }
+    .slide.active { opacity: 1; visibility: visible; position: relative; }
+    .slide h1 { font-size: clamp(2rem, 4.6vw, 3.4rem); line-height: 1.1; margin: 0 0 18px; letter-spacing: -.02em; }
+    .slide p { color: var(--muted); font-size: 1.1rem; max-width: 520px; margin: 0 0 28px; }
+    .slide-img img { width: 100%; height: auto; max-height: 480px; object-fit: contain; }
+    .slider-controls { display: flex; align-items: center; gap: 14px; padding-bottom: 36px; }
+    .arrow { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: #fff; display: grid; place-items: center; transition: .2s; }
+    .arrow:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .dots { display: flex; gap: 8px; }
+    .dot { width: 10px; height: 10px; border-radius: 999px; border: 0; background: #c9d8d3; transition: .3s; padding: 0; }
+    .dot.active { width: 28px; background: var(--primary); }
+    .stats { display: flex; gap: 34px; margin-top: 34px; flex-wrap: wrap; }
+    .stats strong { display: block; font-size: 1.6rem; color: var(--primary); }
+    .stats span { font-size: .88rem; color: var(--muted); }
+
+    /* ============ SERVICES ============ */
+    .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; transition: .25s; display: flex; flex-direction: column; }
+    .service:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: transparent; }
+    .service img { height: 150px; width: 100%; object-fit: contain; margin-bottom: 20px; }
+    .service h3 { margin: 0 0 8px; font-size: 1.25rem; }
+    .service p { margin: 0 0 18px; color: var(--muted); flex: 1; }
+    .service a.more { color: var(--primary); font-weight: 700; }
+
+    /* ============ WHY ============ */
+    .why { background: var(--bg-alt); }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .why h2 { font-size: clamp(1.7rem, 3.5vw, 2.5rem); line-height: 1.2; margin: 0 0 18px; }
+    .why p { color: var(--muted); font-size: 1.05rem; }
+    .badges { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 30px; }
+    .badge { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; font-weight: 700; font-size: .88rem; display: flex; align-items: center; gap: 6px; }
+    .badge::before { content: "✓"; color: var(--primary); }
+
+    /* ============ PRODUCTS ============ */
+    .tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 34px; flex-wrap: wrap; }
+    .tab { border: 1px solid var(--line); background: #fff; padding: 10px 22px; border-radius: 999px; font-weight: 700; color: var(--muted); }
+    .tab[aria-selected="true"] { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .product { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff; transition: .25s; display: flex; flex-direction: column; }
+    .product:hover { box-shadow: var(--shadow); }
+    .product-img { position: relative; background: var(--bg-alt); aspect-ratio: 1; }
+    .product-img img { width: 100%; height: 100%; object-fit: cover; }
+    .sale-tag { position: absolute; top: 12px; left: 12px; background: var(--accent); color: #fff; font-size: .75rem; font-weight: 800; padding: 4px 10px; border-radius: 999px; }
+    .product-body { padding: 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .product-cat { font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+    .product h3 { font-size: 1.05rem; margin: 0; }
+    .price { display: flex; gap: 8px; align-items: baseline; margin-top: auto; }
+    .price del { color: var(--muted); font-size: .88rem; }
+    .price ins { text-decoration: none; font-weight: 800; color: var(--primary); font-size: 1.1rem; }
+    .add-btn { margin-top: 10px; width: 100%; justify-content: center; padding: 10px; }
+
+    /* ============ TESTIMONIALS ============ */
+    .testimonials { background: var(--bg-alt); }
+    .t-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .t-card { background: #fff; border-radius: var(--radius); padding: 28px; border: 1px solid var(--line); }
+    .t-card .stars { color: var(--accent); letter-spacing: 2px; margin-bottom: 10px; }
+    .t-card blockquote { margin: 0 0 18px; color: var(--muted); }
+    .t-person { display: flex; align-items: center; gap: 12px; }
+    .avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--primary-soft); color: var(--primary-dark); display: grid; place-items: center; font-weight: 800; }
+    .t-person small { display: block; color: var(--muted); }
+
+    /* ============ NEWSLETTER ============ */
+    .newsletter { background: var(--primary); color: #fff; border-radius: 22px; padding: 54px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+    .newsletter h2 { margin: 0 0 8px; font-size: clamp(1.5rem, 3vw, 2.1rem); }
+    .newsletter p { margin: 0; opacity: .85; }
+    .nl-form { display: flex; gap: 10px; flex-wrap: wrap; }
+    .nl-form input { flex: 1; min-width: 200px; padding: 14px 18px; border-radius: 999px; border: 0; font: inherit; }
+    .nl-form .btn { background: var(--ink); border-color: var(--ink); }
+    .nl-msg { width: 100%; font-size: .9rem; min-height: 1.2em; }
+
+    /* ============ FOOTER ============ */
+    footer { background: var(--ink); color: #c8d4d0; padding: 70px 0 24px; margin-top: 80px; }
+    .f-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; }
+    .f-logo { background: #fff; display: inline-block; padding: 10px 14px; border-radius: 10px; margin-bottom: 16px; }
+    .f-logo img { height: 36px; }
+    footer h4 { color: #fff; margin: 0 0 16px; font-size: 1rem; }
+    footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+    footer a:hover { color: #fff; }
+    .socials { display: flex; gap: 10px; margin-top: 18px; }
+    .socials a { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,.08); display: grid; place-items: center; transition: .2s; }
+    .socials a:hover { background: var(--primary); }
+    .socials svg { width: 18px; height: 18px; fill: currentColor; }
+    .copyright { border-top: 1px solid rgba(255,255,255,.1); margin-top: 50px; padding-top: 22px; text-align: center; font-size: .88rem; }
+
+    /* ============ CART DRAWER ============ */
+    .overlay { position: fixed; inset: 0; background: rgba(0,0,0,.4); opacity: 0; visibility: hidden; transition: .3s; z-index: 90; }
+    .drawer { position: fixed; top: 0; right: 0; height: 100%; width: min(400px, 100%); background: #fff; z-index: 100; transform: translateX(100%); transition: .3s; display: flex; flex-direction: column; }
+    .cart-open .overlay { opacity: 1; visibility: visible; }
+    .cart-open .drawer { transform: none; }
+    .drawer-head { display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid var(--line); }
+    .drawer-head h3 { margin: 0; }
+    .close-btn { background: none; border: 0; font-size: 1.6rem; line-height: 1; }
+    .cart-items { flex: 1; overflow-y: auto; padding: 20px; display: grid; gap: 16px; align-content: start; }
+    .cart-item { display: grid; grid-template-columns: 64px 1fr auto; gap: 12px; align-items: center; }
+    .cart-item img { width: 64px; height: 64px; object-fit: cover; border-radius: 10px; background: var(--bg-alt); }
+    .cart-item h4 { margin: 0; font-size: .95rem; }
+    .qty { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+    .qty button { width: 26px; height: 26px; border-radius: 6px; border: 1px solid var(--line); background: #fff; }
+    .remove { background: none; border: 0; color: var(--muted); font-size: .8rem; text-decoration: underline; }
+    .empty { text-align: center; color: var(--muted); padding: 40px 0; }
+    .drawer-foot { padding: 20px; border-top: 1px solid var(--line); display: grid; gap: 12px; }
+    .total-row { display: flex; justify-content: space-between; font-weight: 800; font-size: 1.1rem; }
+
+    .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 120px); background: var(--ink); color: #fff; padding: 12px 20px; border-radius: 999px; z-index: 120; transition: .3s; font-weight: 600; }
+    .toast.show { transform: translate(-50%, 0); }
+
+    /* ============ WHATSAPP FLOAT ============ */
+    .wa-float { position: fixed; right: 20px; bottom: 20px; width: 58px; height: 58px; border-radius: 50%; background: #25d366; display: grid; place-items: center; box-shadow: 0 8px 24px rgba(0,0,0,.2); z-index: 80; transition: .2s; }
+    .wa-float:hover { transform: scale(1.07); }
+    .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1000px) {
+      .products { grid-template-columns: repeat(2, 1fr); }
+      .f-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 860px) {
+      .menu-toggle { display: block; }
+      .nav-links { position: absolute; top: 76px; left: 0; right: 0; background: #fff; flex-direction: column; gap: 0; padding: 8px 16px 16px; border-bottom: 1px solid var(--line); display: none; }
+      .nav-links.open { display: flex; }
+      .nav-links li a { display: block; padding: 12px 0; border-bottom: 1px solid var(--line); }
+      .slide { grid-template-columns: 1fr; text-align: center; padding-top: 40px; gap: 20px; }
+      .slide p { margin-inline: auto; }
+      .slide-img img { max-height: 300px; margin: 0 auto; }
+      .stats { justify-content: center; }
+      .slider-controls { justify-content: center; }
+      .services, .t-grid { grid-template-columns: 1fr; }
+      .why-grid, .newsletter { grid-template-columns: 1fr; }
+      .newsletter { padding: 36px 24px; }
+      .section { padding: 60px 0; }
+    }
+    @media (max-width: 520px) {
+      .products { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .product-body { padding: 12px; }
+      .f-grid { grid-template-columns: 1fr; }
+      .cart-btn .cart-label { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#content" class="skip-link">Skip to content</a>
+
+  <!-- Promo bar -->
+  <div class="promo" id="promo">
+    <div class="container">
+      <span>🎉 Get <strong>30% off</strong> your first purchase</span>
+      <button type="button" id="promoClose">Got it!</button>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="https://pharmahub.com.ng/" class="logo" aria-label="PharmaHub home">
+        <img src="https://pharmahub.com.ng/wp-content/uploads/2026/06/PharmaHub-Landscape-Logo-01-scaled.png" alt="PharmaHub" />
+      </a>
+      <nav aria-label="Main">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="https://pharmahub.com.ng/" aria-current="page">Home</a></li>
+          <li><a href="https://pharmahub.com.ng/about-us/">About Us</a></li>
+          <li><a href="https://pharmahub.com.ng/shop-list/">Shop</a></li>
+          <li><a href="https://pharmahub.com.ng/blog/">Blog</a></li>
+          <li><a href="https://pharmahub.com.ng/contact-us/">Contact Us</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="cart-btn" id="cartBtn" type="button" aria-label="Open cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+          <span class="cart-label" id="cartTotalHeader">₦0.00</span>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="content">
+    <!-- Hero slider -->
+    <section class="hero" aria-roledescription="carousel" aria-label="Highlights">
+      <div class="container">
+        <div class="slides" id="slides">
+          <div class="slide active">
+            <div>
+              <span class="eyebrow">Nigeria's #1 digital pharmacy platform</span>
+              <h1>Every Pharmacy. Every Patient. One Platform.</h1>
+              <p>Connecting 150,000+ users – pharmacists, students, and patients – with the health services and medicine information they need.</p>
+              <a class="btn" href="https://wa.link/q2zwxr" target="_blank" rel="noopener">Talk to a Pharmacist →</a>
+              <div class="stats">
+                <div><strong>150K+</strong><span>Users connected</span></div>
+                <div><strong>Free</strong><span>Drug &amp; poison info</span></div>
+                <div><strong>PCN · PSN · CAC</strong><span>Registered</span></div>
+              </div>
+            </div>
+            <div class="slide-img"><img src="https://pharmahub.com.ng/wp-content/uploads/2026/06/slide-01-01-01-scaled.png" alt="Pharmacist helping a patient" /></div>
+          </div>
+
+          <div class="slide">
+            <div>
+              <span class="eyebrow">Medication safety</span>
+              <h2 class="h1-like" style="font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.1;margin:0 0 18px;letter-spacing:-.02em">Reduce Irrational Drug Use. Save Lives.</h2>
+              <p>Get free drug and poison information from licensed pharmacists. Make informed decisions about your health and medications.</p>
+              <a class="btn" href="https://wa.link/q2zwxr" target="_blank" rel="noopener">Talk to a Pharmacist →</a>
+            </div>
+            <div class="slide-img"><img src="https://pharmahub.com.ng/wp-content/uploads/2026/06/Slide-1-01-01-01-01-scaled.png" alt="Medication safety" loading="lazy" /></div>
+          </div>
+
+          <div class="slide">
+            <div>
+              <span class="eyebrow">For pharmacists</span>
+              <h2 style="font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.1;margin:0 0 18px;letter-spacing:-.02em">Grow Your Practice. Build Your Career. Save Lives.</h2>
+              <p>Access professional development resources, pharmacy job adverts, mentorship, and a thriving community of fellow pharmacists.</p>
+              <a class="btn" href="https://t.me/pharmahubadverts" target="_blank" rel="noopener">Join The Community →</a>
+            </div>
+            <div class="slide-img"><img src="https://pharmahub.com.ng/wp-content/uploads/2026/06/slide-3-01-scaled.png" alt="Pharmacists community" loading="lazy" /></div>
+          </div>
+
+          <div class="slide">
+            <div>
+              <span class="eyebrow">Drug procurement</span>
+              <h2 style="font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.1;margin:0 0 18px;letter-spacing:-.02em">Quality Medicines. Trusted Suppliers.</h2>
+              <p>Source pharmaceutical consumables and medications from verified suppliers. CAC, PCN, and PSN registered for your assurance.</p>
+              <a class="btn" href="https://pharmahub.com.ng/shop-list/">Shop Now →</a>
+            </div>
+            <div class="slide-img"><img src="https://pharmahub.com.ng/wp-content/uploads/2026/06/slide-004-01-01-01-01-01-scaled.png" alt="Quality medicines" loading="lazy" /></div>
+          </div>
+        </div>
+
+        <div class="slider-controls">
+          <button class="arrow" id="prev" type="button" aria-label="Previous slide">←</button>
+          <div class="dots" id="dots"></div>
+          <button class="arrow" id="next" type="button" aria-label="Next slide">→</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">What we do</span>
+          <h2>Health services for patients and pharmacists</h2>
+        </div>
+        <div class="services">
+          <article class="service">
+            <img src="https://pharmahub.com.ng/wp-content/uploads/2026/06/health_info-01.png" alt="" loading="lazy" />
+            <h3>Health Information</h3>
+            <p>Get free, trusted drug and poison information from licensed pharmacists.</p>
+            <a class="more" href="https://wa.link/q2zwxr" target="_blank" rel="noopener">Ask a pharmacist →</a>
+          </article>
+          <article class="service">
+            <img src="https://pharmahub.com.ng/wp-content/uploads/2026/06/marketplace-01.png" alt="" loading="lazy" />
+            <h3>Pharmacy Marketplace</h3>
+            <p>Source quality medicines, consumables, and pharmaceutical supplies from verified vendors.</p>
+            <a class="more" href="https://pharmahub.com.ng/shop-list/">Visit the shop →</a>
+          </article>
+          <article class="service">
+            <img src="https://pharmahub.com.ng/wp-content/uploads/2026/07/target-achievement-teamwork-business-concept.png" alt="" loading="lazy" />
+            <h3>Professional Growth</h3>
+            <p>Advance your pharmacy career with mentorship, staff training, and consultancy services.</p>
+            <a class="more" href="https://t.me/pharmahubadverts" target="_blank" rel="noopener">Join the community →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why PharmaHub -->
+    <section class="section why">
+      <div class="container why-grid">
+        <div>
+          <span class="eyebrow">Why PharmaHub?</span>
+          <h2>Every Pharmacy. Every Patient. Every Policy.</h2>
+          <p>Irrational drug use, poor health policies, and unsafe medication practices cost lives across Africa every day. PharmaHubNG exists to change that — connecting patients, pharmacists, and communities with the information, tools, and advocacy they need to make healthcare safer for everyone.</p>
+          <div class="badges">
+            <span class="badge">CAC Registered</span>
+            <span class="badge">PCN Registered</span>
+            <span class="badge">PSN Registered</span>
+          </div>
+          <a class="btn btn-outline" href="https://pharmahub.com.ng/about-us/">Learn more about us</a>
+        </div>
+        <img src="https://pharmahub.com.ng/wp-content/uploads/2026/06/slide-2-01-scaled.png" alt="PharmaHub community" loading="lazy" />
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section class="section" id="shop">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Marketplace</span>
+          <h2>Featured Products</h2>
+        </div>
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" aria-selected="true" data-tab="best">Best Sellers</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="new">New Arrivals</button>
+        </div>
+        <div class="products" id="productGrid"></div>
+        <div style="text-align:center;margin-top:40px">
+          <a class="btn btn-outline" href="https://pharmahub.com.ng/shop-list/">View all products</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials: replace with real customer quotes (with their permission) -->
+    <section class="section testimonials">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Testimonials</span>
+          <h2>Hear From Our Customers</h2>
+        </div>
+        <div class="t-grid">
+          <figure class="t-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>[Customer quote 1 — replace with a real review]</blockquote>
+            <figcaption class="t-person"><span class="avatar">A</span><span><strong>[Customer name]</strong><small>[Role / location]</small></span></figcaption>
+          </figure>
+          <figure class="t-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>[Customer quote 2 — replace with a real review]</blockquote>
+            <figcaption class="t-person"><span class="avatar">B</span><span><strong>[Customer name]</strong><small>[Role / location]</small></span></figcaption>
+          </figure>
+          <figure class="t-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>[Customer quote 3 — replace with a real review]</blockquote>
+            <figcaption class="t-person"><span class="avatar">C</span><span><strong>[Customer name]</strong><small>[Role / location]</small></span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section" style="padding-bottom:0">
+      <div class="container">
+        <div class="newsletter">
+          <div>
+            <h2>Subscribe To Our Newsletter</h2>
+            <p>Medication safety tips, new products, job adverts and offers — straight to your inbox.</p>
+          </div>
+          <!-- Point action="" at your email service (Mailchimp, Brevo, etc.) -->
+          <form class="nl-form" id="nlForm" action="" method="post" novalidate>
+            <label for="nlEmail" class="skip-link" style="position:absolute;left:-999px">Email</label>
+            <input type="email" id="nlEmail" name="email" placeholder="Your email address" required />
+            <button class="btn" type="submit">Subscribe</button>
+            <div class="nl-msg" id="nlMsg" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="f-grid">
+        <div>
+          <a href="https://pharmahub.com.ng/" class="f-logo"><img src="https://pharmahub.com.ng/wp-content/uploads/2026/06/PharmaHub-Landscape-Logo-01-scaled.png" alt="PharmaHub" /></a>
+          <p>Nigeria's #1 digital pharmacy platform — for patients, for pharmacists, and for policies.</p>
+          <div class="socials">
+            <a href="https://www.instagram.com/pharmahub_ng" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.1.4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.1.4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.1a6.7 6.7 0 1 0 0 13.4 6.7 6.7 0 0 0 0-13.4zm0 11a4.3 4.3 0 1 1 0-8.6 4.3 4.3 0 0 1 0 8.6zm7-11.3a1.6 1.6 0 1 1-3.1 0 1.6 1.6 0 0 1 3.1 0z"/></svg></a>
+            <a href="https://www.linkedin.com/company/pharmhub-ng/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.2 1.5-2.2 3V21H9z"/></svg></a>
+            <a href="https://www.tiktok.com/@pharmahubng" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.8 5.8 0 1 0 4.9 5.7V9a7.4 7.4 0 0 0 4.3 1.4V7.3a4.3 4.3 0 0 1-3.2-1.5z"/></svg></a>
+            <a href="https://x.com/pharmahub_NG" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24"><path d="M17.7 3h3.1l-6.8 7.7L22 21h-6.3l-4.9-6.4L5.2 21H2.1l7.2-8.3L1.8 3h6.4l4.4 5.9zm-1.1 16.2h1.7L7.5 4.7H5.7z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>📍 FCT, Abuja</li>
+            <li><a href="tel:+2348024640699">📞 +234 802 464 0699</a></li>
+            <li><a href="mailto:info@pharmahub.com.ng">✉️ info@pharmahub.com.ng</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="https://pharmahub.com.ng/shop-list/">New Products</a></li>
+            <li><a href="https://pharmahub.com.ng/shop-list/">Top Sellers</a></li>
+            <li><a href="https://pharmahub.com.ng/about-us/">About Our Shop</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="https://pharmahub.com.ng/about-us/">About Us</a></li>
+            <li><a href="https://pharmahub.com.ng/blog/">Our Blog</a></li>
+            <li><a href="https://pharmahub.com.ng/contact-us/">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">Copyright © <span id="year">2026</span> | PharmaHub. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Cart drawer -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer-head">
+      <h3>Your Cart</h3>
+      <button class="close-btn" id="closeCart" type="button" aria-label="Close cart">×</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="drawer-foot">
+      <div class="total-row"><span>Total</span><span id="cartTotal">₦0.00</span></div>
+      <!-- Checkout via WhatsApp; swap for your payment gateway (Paystack/Flutterwave) when ready -->
+      <a class="btn" id="checkoutBtn" href="#" target="_blank" rel="noopener" style="justify-content:center">Checkout on WhatsApp</a>
+      <a class="btn btn-outline" href="https://pharmahub.com.ng/shop-list/" style="justify-content:center">Continue shopping</a>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status">Added to cart</div>
+
+  <!-- WhatsApp float -->
+  <a class="wa-float" href="https://wa.link/q2zwxr" target="_blank" rel="noopener" aria-label="Chat with a pharmacist on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4a9.8 9.8 0 1 1 8.3 4.6zm8.4-18.2A11.8 11.8 0 0 0 1.7 17.8L0 24l6.3-1.7A11.8 11.8 0 0 0 24 12c0-3.2-1.2-6.1-3.6-8.4z"/></svg>
+  </a>
+
+  <script>
+    /* ============ PRODUCT DATA (edit here) ============ */
+    const PRODUCTS = [
+      { id: "imodium", name: "Imodium", url: "https://pharmahub.com.ng/product/imodium/", img: "https://pharmahub.com.ng/wp-content/uploads/2026/09/imodium-300x300.webp", was: 45000, price: 40000 },
+      { id: "probiotic", name: "Probiotic", url: "https://pharmahub.com.ng/product/probiotic/", img: "https://pharmahub.com.ng/wp-content/uploads/2026/09/probiotic-300x300.webp", was: 35000, price: 30000 },
+      { id: "cold-compress", name: "Cold Compress", url: "https://pharmahub.com.ng/product/emetrol/", img: "https://pharmahub.com.ng/wp-content/uploads/2026/09/cold-compress.jpg", was: 40000, price: 35000 },
+      { id: "eye-drop", name: "Eye Allergy Relief Drop", url: "https://pharmahub.com.ng/product/eye-allergy-releif-drop/", img: "https://pharmahub.com.ng/wp-content/uploads/2026/09/eye-drop-300x300.webp", was: 50000, price: 30000 }
+    ];
+    const LISTS = {
+      best: ["imodium", "probiotic", "cold-compress", "eye-drop"],
+      new:  ["eye-drop", "cold-compress", "probiotic", "imodium"]
+    };
+    const WHATSAPP_NUMBER = "2348024640699"; // used for checkout orders
+
+    const naira = n => "₦" + n.toLocaleString("en-NG", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const byId = id => PRODUCTS.find(p => p.id === id);
+    const $ = s => document.querySelector(s);
+
+    /* ============ PRODUCTS GRID ============ */
+    function renderProducts(listKey) {
+      $("#productGrid").innerHTML = LISTS[listKey].map(id => {
+        const p = byId(id);
+        const off = Math.round((1 - p.price / p.was) * 100);
+        return `
+          <article class="product">
+            <a href="${p.url}" class="product-img">
+              ${p.was > p.price ? `<span class="sale-tag">-${off}%</span>` : ""}
+              <img src="${p.img}" alt="${p.name}" loading="lazy" />
+            </a>
+            <div class="product-body">
+              <span class="product-cat">Shop</span>
+              <h3><a href="${p.url}">${p.name}</a></h3>
+              <div class="price">
+                ${p.was > p.price ? `<del>${naira(p.was)}</del>` : ""}
+                <ins>${naira(p.price)}</ins>
+              </div>
+              <button class="btn add-btn" type="button" data-add="${p.id}">Add to cart</button>
+            </div>
+          </article>`;
+      }).join("");
+    }
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", "false"));
+        tab.setAttribute("aria-selected", "true");
+        renderProducts(tab.dataset.tab);
+      });
+    });
+    renderProducts("best");
+
+    /* ============ CART ============ */
+    let cart = {};
+    try { cart = JSON.parse(localStorage.getItem("ph_cart")) || {}; } catch (e) { cart = {}; }
+    const save = () => { try { localStorage.setItem("ph_cart", JSON.stringify(cart)); } catch (e) {} };
+
+    function renderCart() {
+      const ids = Object.keys(cart).filter(id => byId(id));
+      const count = ids.reduce((s, id) => s + cart[id], 0);
+      const total = ids.reduce((s, id) => s + cart[id] * byId(id).price, 0);
+      $("#cartCount").textContent = count;
+      $("#cartTotal").textContent = naira(total);
+      $("#cartTotalHeader").textContent = naira(total);
+
+      $("#cartItems").innerHTML = ids.length ? ids.map(id => {
+        const p = byId(id);
+        return `
+          <div class="cart-item">
+            <img src="${p.img}" alt="" />
+            <div>
+              <h4>${p.name}</h4>
+              <div class="qty">
+                <button type="button" data-dec="${id}" aria-label="Decrease">−</button>
+                <span>${cart[id]}</span>
+                <button type="button" data-inc="${id}" aria-label="Increase">+</button>
+              </div>
+              <button class="remove" type="button" data-remove="${id}">Remove</button>
+            </div>
+            <strong>${naira(p.price * cart[id])}</strong>
+          </div>`;
+      }).join("") : `<div class="empty"><p><strong>Your cart is empty</strong></p><p>Check out our shop to see what's available.</p></div>`;
+
+      const lines = ids.map(id => `• ${byId(id).name} x${cart[id]} = ${naira(byId(id).price * cart[id])}`).join("\n");
+      const msg = `Hello PharmaHub, I'd like to order:\n${lines}\nTotal: ${naira(total)}`;
+      $("#checkoutBtn").href = ids.length ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}` : "https://pharmahub.com.ng/shop-list/";
+      $("#checkoutBtn").textContent = ids.length ? "Checkout on WhatsApp" : "Shop now →";
+    }
+
+    let toastTimer;
+    function toast(text) {
+      const t = $("#toast"); t.textContent = text; t.classList.add("show");
+      clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove("show"), 1800);
+    }
+
+    document.addEventListener("click", e => {
+      const add = e.target.closest("[data-add]"), inc = e.target.closest("[data-inc]"),
+            dec = e.target.closest("[data-dec]"), rem = e.target.closest("[data-remove]");
+      if (add) { const id = add.dataset.add; cart[id] = (cart[id] || 0) + 1; toast(`${byId(id).name} added to cart`); }
+      else if (inc) cart[inc.dataset.inc]++;
+      else if (dec) { const id = dec.dataset.dec; cart[id]--; if (cart[id] <= 0) delete cart[id]; }
+      else if (rem) delete cart[rem.dataset.remove];
+      else return;
+      save(); renderCart();
+    });
+
+    const openCart = () => { document.body.classList.add("cart-open"); $("#drawer").setAttribute("aria-hidden", "false"); };
+    const closeCart = () => { document.body.classList.remove("cart-open"); $("#drawer").setAttribute("aria-hidden", "true"); };
+    $("#cartBtn").addEventListener("click", openCart);
+    $("#closeCart").addEventListener("click", closeCart);
+    $("#overlay").addEventListener("click", closeCart);
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeCart(); });
+    renderCart();
+
+    /* ============ HERO SLIDER ============ */
+    const slides = [...document.querySelectorAll(".slide")];
+    const dotsWrap = $("#dots");
+    let current = 0, timer;
+    slides.forEach((_, i) => {
+      const d = document.createElement("button");
+      d.className = "dot" + (i === 0 ? " active" : "");
+      d.type = "button"; d.setAttribute("aria-label", `Go to slide ${i + 1}`);
+      d.addEventListener("click", () => { go(i); restart(); });
+      dotsWrap.appendChild(d);
+    });
+    const dots = [...dotsWrap.children];
+    function go(i) {
+      slides[current].classList.remove("active"); dots[current].classList.remove("active");
+      current = (i + slides.length) % slides.length;
+      slides[current].classList.add("active"); dots[current].classList.add("active");
+    }
+    const restart = () => { clearInterval(timer); timer = setInterval(() => go(current + 1), 6000); };
+    $("#prev").addEventListener("click", () => { go(current - 1); restart(); });
+    $("#next").addEventListener("click", () => { go(current + 1); restart(); });
+    $(".hero").addEventListener("mouseenter", () => clearInterval(timer));
+    $(".hero").addEventListener("mouseleave", restart);
+    restart();
+
+    /* ============ MOBILE MENU ============ */
+    $("#menuToggle").addEventListener("click", () => {
+      const open = $("#navLinks").classList.toggle("open");
+      $("#menuToggle").setAttribute("aria-expanded", open);
+    });
+
+    /* ============ PROMO BAR ============ */
+    try { if (localStorage.getItem("ph_promo_closed")) $("#promo").style.display = "none"; } catch (e) {}
+    $("#promoClose").addEventListener("click", () => {
+      $("#promo").style.display = "none";
+      try { localStorage.setItem("ph_promo_closed", "1"); } catch (e) {}
+    });
+
+    /* ============ NEWSLETTER ============ */
+    $("#nlForm").addEventListener("submit", e => {
+      const email = $("#nlEmail").value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        e.preventDefault(); $("#nlMsg").textContent = "Please enter a valid email address."; return;
+      }
+      if (!e.target.getAttribute("action")) { // no backend connected yet
+        e.preventDefault(); $("#nlMsg").textContent = "Thanks for subscribing! 🎉"; e.target.reset();
+      }
+    });
+
+    $("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
